@@ -149,6 +149,9 @@ a:hover {
   font-weight: 700;
   text-align: right;
 }
+.header__phone:hover {
+  color: white;
+}
 
 .button {
   width: 153px;
@@ -161,8 +164,10 @@ a:hover {
   font-weight: 500;
   text-align: center;
   text-transform: uppercase;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: background-color 0.5s, color 0.5s, -webkit-box-shadow 0.5s;
+  transition: background-color 0.5s, color 0.5s, -webkit-box-shadow 0.5s;
+  transition: background-color 0.5s, box-shadow 0.5s, color 0.5s;
+  transition: background-color 0.5s, box-shadow 0.5s, color 0.5s, -webkit-box-shadow 0.5s;
 }
 .button_main {
   width: 303px;
@@ -182,10 +187,14 @@ a:hover {
 .button_mini:hover, .button_mini:focus {
   border: 1px solid;
 }
-.button:hover, .button:focus {
+.button:hover {
   -webkit-box-shadow: inset -25em 0 0 0 white, inset 25em 0 0 0 white;
   box-shadow: inset -25em 0 0 0 white, inset 25em 0 0 0 white;
   color: black;
+  background-image: none;
+}
+.button:focus {
+  outline: none;
 }
 
 .advantages {
@@ -281,6 +290,12 @@ a:hover {
 }
 .feed-form input:last-of-type {
   margin-bottom: 17px;
+}
+.feed-form_mt25 {
+  margin-top: 25px;
+}
+.feed-form_mobile {
+  width: 240px;
 }
 
 .carousel {
@@ -665,6 +680,53 @@ a:hover {
   scale: 1.1;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.56);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #F2F2F2;
+  max-width: 382px;
+  min-height: 400px;
+  padding: 35px 40px 40px 40px;
+}
+.modal__close {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  color: #c70101;
+  font-size: 21px;
+  cursor: pointer;
+}
+.modal__subtitle {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+.modal__descr {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+.modal_mini {
+  min-height: 143px;
+}
+
+#consultation, #order, #gratitude {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .promo {
     padding-right: 10px;
@@ -690,9 +752,6 @@ a:hover {
   .feedback {
     padding: 0 10px;
   }
-  .footer__social {
-    margin-top: 20px;
-  }
 }
 @media (max-width: 768px) {
   .carousel__slider img {
@@ -715,7 +774,11 @@ a:hover {
   .header__phone {
     font-size: 14px;
   }
+  .promo {
+    padding-right: 0;
+  }
   .promo__wrapper {
+    width: 100%;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -729,6 +792,8 @@ a:hover {
     text-align: center;
   }
   .promo__icons {
+    width: 320px;
+    padding: 0 2px;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -736,6 +801,8 @@ a:hover {
   .button {
     width: 130px;
     font-size: 11px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
   }
   .button_main {
     width: 250px;
@@ -743,6 +810,16 @@ a:hover {
   }
   .button_submit {
     width: 100%;
+  }
+  .button:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: white;
+  }
+  .button:active {
+    color: black;
+    -webkit-box-shadow: inset -25em 0 0 0 white, inset 25em 0 0 0 white;
+    box-shadow: inset -25em 0 0 0 white, inset 25em 0 0 0 white;
   }
   .advantages__wrapper {
     margin-top: 50px;
@@ -772,7 +849,7 @@ a:hover {
     font-size: 24px;
   }
   .consultation {
-    padding: 60px 0 60px 0;
+    padding: 60px 7px;
     min-height: 400px;
   }
   .consultation__descr {
@@ -812,5 +889,21 @@ a:hover {
   }
   .footer__info {
     width: 100%;
+  }
+  .footer__item:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .footer__item img:hover {
+    scale: 1;
+  }
+  .footer__item img:active {
+    scale: 1.1;
+  }
+  .modal {
+    max-width: 320px;
+  }
+  #gratitude {
+    min-width: 250px;
   }
 }

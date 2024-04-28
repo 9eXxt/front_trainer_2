@@ -16,9 +16,9 @@
     //     font-size: 32px
     .feedback
         padding: 0 10px
-    .footer
-        &__social
-            margin-top: 20px
+    // .footer
+    //     &__social
+    //         margin-top: 20px
 @media (max-width:768px)
     .carousel
         &__slider
@@ -38,7 +38,9 @@
         &__phone
             font-size: 14px
     .promo
+        padding-right: 0
         &__wrapper
+            width: 100%
             align-items: center
         &__header
             font-size: 30px
@@ -47,15 +49,24 @@
             font-size: 19px
             text-align: center
         &__icons
+            width: 320px
+            padding: 0 2px
             justify-content: center
     .button
         width: 130px
         font-size: 11px
+        transition: all 0.2s
         &_main
             width: 250px
             font-size: 14px
         &_submit
             width: 100%
+        &:hover
+            box-shadow: none
+            color: white
+        &:active
+            color: black
+            box-shadow: inset -25em 0 0 0 white, inset 25em 0 0 0 white
     .advantages
         &__wrapper
             margin-top: 50px
@@ -71,7 +82,7 @@
         &_left
             font-size: 24px
     .consultation
-        padding: 60px 0 60px 0
+        padding: 60px 7px
         min-height: 400px
         &__descr
             text-align: center
@@ -101,3 +112,15 @@
             display: none
         &__info
             width: 100%
+        &__item
+            &:hover
+                box-shadow: none
+            img
+                &:hover
+                    scale: (1)
+                &:active
+                    scale: (1.1)
+    .modal
+        max-width: 320px
+    #gratitude
+        min-width: 250px

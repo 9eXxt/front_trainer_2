@@ -9,7 +9,7 @@
     font-weight: 500
     text-align: center
     text-transform: uppercase
-    transition: all 0.5s
+    transition: background-color 0.5s, box-shadow 0.5s, color 0.5s
     &_main
         width: 303px
         height: 54px
@@ -24,7 +24,9 @@
         font-size: 14px
         &:hover, &:focus
             border: 1px solid
-    &:hover, &:focus
+    &:hover
         box-shadow: inset -25em 0 0 0 white, inset 25em 0 0 0 white
         color: black
-
+        background-image: none
+    &:focus
+        outline: none
