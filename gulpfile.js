@@ -1,14 +1,14 @@
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import sassPackage from 'gulp-sass';
-import sass from 'sass';
-import cache from 'gulp-cached';
-import rename from "gulp-rename";
-import cleanCSS from 'gulp-clean-css';
-import autoprefixer from 'gulp-autoprefixer';
-import dependents from 'gulp-dependents';
+// import gulp from 'gulp';
+// import browserSync from 'browser-sync';
+// import sassPackage from 'gulp-sass';
+// import * as sass from 'sass';
+// import cache from 'gulp-cached';
+// import rename from "gulp-rename";
+// import cleanCSS from 'gulp-clean-css';
+// import autoprefixer from 'gulp-autoprefixer';
+// import dependents from 'gulp-dependents';
 
-const sassCompiler = sassPackage(sass);
+// const sassCompiler = sassPackage(sass);
 
 // const gulp        = require('gulp');
 // const browserSync = require('browser-sync');
@@ -18,8 +18,58 @@ const sassCompiler = sassPackage(sass);
 // const cleanCSS = require('gulp-clean-css');
 // const autoprefixer = require('gulp-autoprefixer'); 
 
+// // Static server
+// gulp.task('server', function() {
+//     browserSync.init({
+//         server: {
+//             baseDir: "src"
+//         }
+//     });
+// });
+
+// //compile sass
+// gulp.task('style', function() {
+//     return gulp.src("src/sass/**/*.+(scss|sass)")
+//             .pipe(cache('styles'))
+//             .pipe(dependents())
+//             .pipe(sass().on('error', function(){
+//                 console.error("Not correct file sass");
+//                 this.emit('end');
+//             }))
+//             .pipe(autoprefixer())
+//             .pipe(gulp.dest("src/css"))
+//             .pipe(cleanCSS({compatibility: 'ie8'}))
+//             .pipe(rename({
+//                 suffix: '.min'
+//             }))
+//             .pipe(gulp.dest("src/css"))
+//             .pipe(browserSync.stream());
+// });
+
+// //file watcher
+// gulp.task('watch', function() {
+//     gulp.watch("src/sass/**/*.+(scss|sass)", gulp.parallel("style"))
+//     gulp.watch("src/*.html").on("change", browserSync.reload)
+// });
+
+// gulp.task('default', gulp.parallel('watch', 'server', 'style'));
+
+// Importing the necessary modules
+import gulp from 'gulp';
+import browserSyncPackage from 'browser-sync';
+import sassPackage from 'gulp-sass';
+import sassCompiler from 'sass';
+import cache from 'gulp-cached';
+import rename from 'gulp-rename';
+import cleanCSS from 'gulp-clean-css';
+import autoprefixer from 'gulp-autoprefixer';
+
+const { task, src, dest, watch, parallel } = gulp;
+const browserSync = browserSyncPackage.create();
+const sass = sassPackage(sassCompiler);
+
 // Static server
-gulp.task('server', function() {
+task('server', function() {
     browserSync.init({
         server: {
             baseDir: "src"
@@ -27,29 +77,31 @@ gulp.task('server', function() {
     });
 });
 
-//compile sass
-gulp.task('style', function() {
-    return gulp.src("src/sass/*.+(scss|sass)")
-            .pipe(cache('styles'))
-            .pipe(dependents())
-            .pipe(sassCompiler())
+// Compile sass
+task('style', function() {
+    return src("src/sass/**/*.+(scss|sass)")
+            // .pipe(cache('styles'))
+            .pipe(sass().on('error', function(){
+                console.error("Not correct file sass");
+                this.emit('end');
+            }))
             .pipe(autoprefixer({
                 browsers: ['last 2 versions'],
                 cascade: false
             }))
-            .pipe(gulp.dest("src/css"))
-            .pipe(cleanCSS({compability: 'ie8'}))
+            .pipe(dest("src/css"))
+            .pipe(cleanCSS({compatibility: 'ie8'}))
             .pipe(rename({
                 suffix: '.min'
             }))
-            .pipe(gulp.dest("src/css"))
+            .pipe(dest("src/css"))
             .pipe(browserSync.stream());
 });
 
-//file watcher
-gulp.task('watch', function() {
-    gulp.watch("src/sass/*.+(scss|sass)", gulp.parallel("style"))
-    gulp.watch("src/*.html").on("change", browserSync.reload)
+// File watcher
+task('watch', function() {
+    watch("src/sass/**/*.+(scss|sass)", parallel("style"))
+    watch("src/*.html").on("change", browserSync.reload)
 });
 
-gulp.task('default', gulp.parallel('watch', 'server', 'style'));
+task('default', parallel('watch', 'server', 'style'));

@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "auto-prefixer": "^0.4.2",
     "browser-sync": "^3.0.2",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
@@ -20,5 +19,8 @@
     "gulp-sass": "^5.1.0",
     "sass": "^1.75.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "tiny-slider": "^2.9.4"
+  }
 }
