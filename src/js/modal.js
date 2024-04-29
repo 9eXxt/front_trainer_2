@@ -1,4 +1,5 @@
 const overlay = document.querySelector('.overlay');
+const form = document.querySelector('.feed-form');
 const consultationModal = document.querySelector('#consultation');
 const orderModal = document.querySelector('#order');
 const gratitudeModal = document.querySelector('#gratitude');
@@ -11,6 +12,10 @@ consultationButton.addEventListener('click', () => {
 
 const consultationThnaksButton = consultationModal.querySelector('.button_submit');
 consultationThnaksButton.addEventListener('click', (e) => {
+    if (!form.checkValidity()) {
+        // If the form is invalid, let the default form submission behavior occur
+        return;
+    }
     e.preventDefault();
     overlay.style.display = 'block';
     consultationModal.style.display = 'none';
@@ -27,6 +32,10 @@ orderButtons.forEach(orderButton => {
 
 const thanksButton = document.querySelector('.button_submit');
 thanksButton.addEventListener('click', (e) => {
+    if (!form.checkValidity()) {
+        // If the form is invalid, let the default form submission behavior occur
+        return;
+    }
     e.preventDefault();
     overlay.style.display = 'block';
     gratitudeModal.style.display = 'block';

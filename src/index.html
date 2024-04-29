@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <title>Pulse</title>
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/font.css">
@@ -24,8 +24,10 @@
                 </div>
                 <div class="header__contacts">
                     <a href="tel:380999999999" class="header__phone">
-                        +380 99-999-99-99
-                        <button class="button">заказать звонок</button>
+                        <div class="header__contacts">
+                            +380 99-999-99-99
+                            <button class="button">заказать звонок</button>
+                        </div>
                     </a>
                 </div>
             </header>
@@ -491,6 +493,7 @@
     <script src="js/slider.js"></script>
     <script src="js/catalog.js"></script>
     <script src="js/modal.js"></script>
+    <script type="module" src="./js/phoneMask.js"></script>
 </body>
 
 </html>

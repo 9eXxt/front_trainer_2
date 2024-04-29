@@ -276,6 +276,9 @@ a:hover {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 303px;
 }
 .feed-form input {
@@ -293,9 +296,6 @@ a:hover {
 }
 .feed-form_mt25 {
   margin-top: 25px;
-}
-.feed-form_mobile {
-  width: 240px;
 }
 
 .carousel {
@@ -762,6 +762,9 @@ a:hover {
   }
 }
 @media (max-width: 630px) {
+  .header {
+    padding-right: 5px;
+  }
   .header__logo {
     width: 175px;
   }
@@ -905,5 +908,8 @@ a:hover {
   }
   #gratitude {
     min-width: 250px;
+  }
+  .feed-form_mobile {
+    width: 240px;
   }
 }
